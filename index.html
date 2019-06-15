@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Testy testerson</title>
+	</head>
+	<body>
+		Hi
+		<script
+			src="https://code.jquery.com/jquery-3.4.0.min.js"
+			integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+			crossorigin="anonymous"
+		></script>
+		<script>
+			var key =
+				'eIqZX7CEvRRNsgevXTVuA6afsf4Kng_FlFy8DBG1h1drwjN86a3zfOlgzhelZP_728vAicBVGP_ad3bS5aue2QKA6WNy5o63BDOlKVc9x5ey4Nkv2xPfCFtLocm3XHYx';
+			var loc = 'location=Dallas';
+			var term = 'term=indian%20food';
+
+			var buzzURL =
+				'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?' +
+				loc +
+				'&' +
+				term;
+
+			$.ajax({
+				url: buzzURL,
+				type: 'GET',
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader('Authorization', 'Bearer ' + key);
+					xhr.setRequestHeader('X-Requested-With', 'true');
+				},
+				success: function(data) {
+					console.log('Data, we have data here: ', data);
+				},
+			});
+		</script>
+	</body>
+</html>
